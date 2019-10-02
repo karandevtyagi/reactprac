@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//reactstrap components
+// reactstrap components
 import {
   Button,
   Card,
@@ -18,18 +18,18 @@ import {
 
 import TransparentFooter from './Footers/TransparentFooter';
 import AuthenticationService from '../services/AuthenticationService';
-//core components
+// core components
 const Login = () => {
   const [values, setValues] = React.useState({
     email: '',
     password: '',
   });
-//event handlers
+  // event handlers
   const handleChange = (event) => {
     event.persist();
     setValues({ ...values, [event.target.name]: event.target.value });
   };
-
+  // interact with backend to login user
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -45,11 +45,11 @@ const Login = () => {
     }
   };
 
-//email field focus
+  // email field focus
   const [firstFocus, setFirstFocus] = React.useState(false);
-//password field focus
+  // password field focus
   const [lastFocus, setLastFocus] = React.useState(false);
-  
+
   React.useEffect(() => {
     document.body.classList.add('login-page');
     document.body.classList.add('sidebar-collapse');
@@ -138,7 +138,7 @@ const Login = () => {
                     </Button>
                     <div className="pull-left">
                       <h6>
-                       <Link className="link" to="/registration">Create Account</Link>
+                       <Link className="link" to="/register">Create Account</Link>
                       </h6>
                     </div>
                   </CardFooter>

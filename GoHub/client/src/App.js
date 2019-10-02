@@ -11,7 +11,7 @@ function App() {
    <Switch>
      <Route exact path="/" render={() => <Panel />} />
      <Route path="/login" render={() => <Login />} />
-     <Route path="/registration" render={() => <Registration />} />
+     <Route path="/register" render={() => <Registration />} />
    </Switch>
    </>
   );
