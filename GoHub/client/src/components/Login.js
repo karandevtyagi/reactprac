@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // reactstrap components
 import {
   Button,
@@ -17,9 +18,10 @@ import {
 } from 'reactstrap';
 
 import TransparentFooter from './Footers/TransparentFooter';
-import AuthenticationService from '../services/AuthenticationService';
+import login from '../store/actions/index';
 // core components
 const Login = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = React.useState({
     email: '',
     password: '',
@@ -30,16 +32,14 @@ const Login = () => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
   // interact with backend to login user
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     try {
-      const user = {
+      const userdetail = {
         email: values.email,
         password: values.password,
       };
-      console.log(user);
-      const response = await AuthenticationService.login(user);
-      console.log(response.data);
+      dispatch(login(userdetail));
     } catch (error) {
       console.error(error);
     }

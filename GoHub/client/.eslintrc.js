@@ -26,6 +26,7 @@ module.exports = {
         "react/destructuring-assignment": [OFF],
         "global-require":0,
         "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-        "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+        "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+        "no-underscore-dangle": 'off'
     }
 };
