@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//reactstrap components
+import { useDispatch } from 'react-redux';
+// reactstrap components
 import {
   Button,
   Card,
@@ -17,39 +18,38 @@ import {
 } from 'reactstrap';
 
 import TransparentFooter from './Footers/TransparentFooter';
-import AuthenticationService from '../services/AuthenticationService';
-//core components
+import login from '../store/actions/index';
+// core components
 const Login = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = React.useState({
     email: '',
     password: '',
   });
-//event handlers
+  // event handlers
   const handleChange = (event) => {
     event.persist();
     setValues({ ...values, [event.target.name]: event.target.value });
   };
-
-  const handleSubmit = async (event) => {
+  // interact with backend to login user
+  const handleSubmit = (event) => {
     event.preventDefault();
     try {
-      const user = {
+      const userdetail = {
         email: values.email,
         password: values.password,
       };
-      console.log(user);
-      const response = await AuthenticationService.login(user);
-      console.log(response.data);
+      dispatch(login(userdetail));
     } catch (error) {
       console.error(error);
     }
   };
 
-//email field focus
+  // email field focus
   const [firstFocus, setFirstFocus] = React.useState(false);
-//password field focus
+  // password field focus
   const [lastFocus, setLastFocus] = React.useState(false);
-  
+
   React.useEffect(() => {
     document.body.classList.add('login-page');
     document.body.classList.add('sidebar-collapse');
@@ -138,7 +138,7 @@ const Login = () => {
                     </Button>
                     <div className="pull-left">
                       <h6>
-                       <Link className="link" to="/registration">Create Account</Link>
+                       <Link className="link" to="/register">Create Account</Link>
                       </h6>
                     </div>
                   </CardFooter>
