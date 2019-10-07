@@ -1,4 +1,6 @@
-import { REGISTER_SUCCESS, REGISTER_FAILURE } from '../constants/alertconstants';
+import {
+  REGISTER_SUCCESS, REGISTER_FAILURE, USER_LOADED, AUTH_ERROR,
+} from '../constants/alertconstants';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -24,6 +26,21 @@ export default function (state = initialState, action) {
         token: null,
         isAuthenticated: false,
         loading: false,
+      };
+    case AUTH_ERROR:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+      };
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: payload,
       };
     default:
       return state;

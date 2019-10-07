@@ -8,4 +8,7 @@ export default {
   login(credentials) {
     return Api().post('login', credentials);
   },
+  load() {
+    return Api().get('user');
+  },
 };
