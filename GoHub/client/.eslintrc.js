@@ -27,6 +27,7 @@ module.exports = {
         "global-require":0,
         "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
         "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-        "no-underscore-dangle": 'off'
+        "no-underscore-dangle": 'off',
+        
     }
 };

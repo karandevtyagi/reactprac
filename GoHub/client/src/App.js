@@ -3,11 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 import Panel from './components/Panel';
 import Login from './components/Login';
 import Registration from './components/Registration';
+import Alert from './components/Alert';
 
 function App() {
   return (
    <>
    {/* <Panel /> */}
+   <Alert />
    <Switch>
      <Route exact path="/" render={() => <Panel />} />
      <Route path="/login" render={() => <Login />} />

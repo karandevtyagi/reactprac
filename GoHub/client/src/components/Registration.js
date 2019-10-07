@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 // reactstrap components
 import {
   Button,
@@ -17,9 +19,10 @@ import {
   Row,
 } from 'reactstrap';
 import AuthenticationService from '../services/AuthenticationService';
+import setAlert from '../store/actions/alert';
 // core components
 
-function SignUp() {
+const SignUp = (props) => {
   const [usernameFocus, setUsernameFocus] = React.useState(false);
   const [emailFocus, setEmailFocus] = React.useState(false);
   const [companynameFocus, setCompanynameFocus] = React.useState(false);
@@ -33,6 +36,7 @@ function SignUp() {
     gstnumber: '',
     licensenumber: '',
     password: '',
+    error: '',
   });
   // event handlers
   const handleChange = (event) => {
@@ -51,11 +55,10 @@ function SignUp() {
         licensenumber: values.licensenumber,
         password: values.password,
       };
-      console.log(user);
       const response = await AuthenticationService.register(user);
       console.log(response.data);
     } catch (error) {
-      console.error(error);
+      props.setAlert(error.response.data.error);
     }
   };
 
@@ -67,7 +70,7 @@ function SignUp() {
           backgroundImage: `url(${require('../assets/img/bg11.jpg')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'top center',
-          minHeight: '1700px',
+          minHeight: '1000px',
         }}
       >
         <Container>
@@ -252,6 +255,8 @@ function SignUp() {
       </div>
     </>
   );
-}
-
-export default SignUp;
+};
+SignUp.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+export default connect(null, { setAlert })(SignUp);
