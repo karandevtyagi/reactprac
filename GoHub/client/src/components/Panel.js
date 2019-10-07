@@ -58,14 +58,14 @@ function Panel() {
         <Container>
           <div className="navbar-translate">
             <NavbarBrand
-              href="https://demos.creative-tim.com/now-ui-kit-react/#/index?ref=nukr-index-navbar"
+              href="/"
               target="_blank"
               id="navbar-brand"
             >
-              Now UI Kit React
+              GoHub
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-              Designed by Invision. Coded by Creative Tim
+              About Gohub
             </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
@@ -89,16 +89,9 @@ function Panel() {
             <Nav navbar>
               <NavItem>
                 <NavLink
-                  href="#pablo"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .getElementById('download-section')
-                      .scrollIntoView();
-                  }}
+                  href="/login"
                 >
-                  <i className="now-ui-icons arrows-1_cloud-download-93" />
-                  <p>Download</p>
+                  <p>Login/Register</p>
                 </NavLink>
               </NavItem>
               <UncontrolledDropdown nav>
@@ -110,19 +103,19 @@ function Panel() {
                   onClick={(e) => e.preventDefault()}
                 >
                   <i className="now-ui-icons design_app mr-1" />
-                  <p>Components</p>
+                  <p>More</p>
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem to="/index" tag={Link}>
                     <i className="now-ui-icons business_chart-pie-36 mr-1" />
-                    All components
+                    Coming Soon
                   </DropdownItem>
                   <DropdownItem
-                    href="https://demos.creative-tim.com/now-ui-kit-react/#/documentation/introduction?ref=nukr-index-navbar"
+                    href="r"
                     target="_blank"
                   >
                     <i className="now-ui-icons design_bullet-list-67 mr-1" />
-                    Documentation
+                    Sell on Gohub
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -135,7 +128,7 @@ function Panel() {
                   onClick={(e) => e.preventDefault()}
                 >
                   <i className="now-ui-icons arrows-1_share-66 mr-1" />
-                  <p>Upgrade to PRO</p>
+                  <p>Cart</p>
                 </Button>
                 <UncontrolledTooltip target="#upgrade-to-pro">
                   Cooming soon!
@@ -143,7 +136,7 @@ function Panel() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://twitter.com/CreativeTim?ref=creativetim"
+                  href=""
                   target="_blank"
                   id="twitter-tooltip"
                 >
@@ -156,7 +149,7 @@ function Panel() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  href=""
                   target="_blank"
                   id="facebook-tooltip"
                 >
@@ -169,7 +162,7 @@ function Panel() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  href=""
                   target="_blank"
                   id="instagram-tooltip"
                 >

@@ -18,8 +18,7 @@ import {
   Container,
   Row,
 } from 'reactstrap';
-import AuthenticationService from '../services/AuthenticationService';
-import setAlert from '../store/actions/alert';
+import register from '../store/actions/auth';
 // core components
 
 const SignUp = (props) => {
@@ -46,20 +45,15 @@ const SignUp = (props) => {
   // interact with backend to register user
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const user = {
-        username: values.username,
-        email: values.email,
-        companyname: values.companyname,
-        gstnumber: values.gstnumber,
-        licensenumber: values.licensenumber,
-        password: values.password,
-      };
-      const response = await AuthenticationService.register(user);
-      console.log(response.data);
-    } catch (error) {
-      props.setAlert(error.response.data.error);
-    }
+    const user = {
+      username: values.username,
+      email: values.email,
+      companyname: values.companyname,
+      gstnumber: values.gstnumber,
+      licensenumber: values.licensenumber,
+      password: values.password,
+    };
+    props.register(user);
   };
 
   return (
@@ -257,6 +251,6 @@ const SignUp = (props) => {
   );
 };
 SignUp.propTypes = {
-  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
-export default connect(null, { setAlert })(SignUp);
+export default connect(null, { register })(SignUp);
