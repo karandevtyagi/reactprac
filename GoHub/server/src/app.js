@@ -9,6 +9,7 @@ app.use(morgan('combine'))
 app.use(bodyparser.json())
 app.use(cors())
 require('./routes')(app)
+require('./passport')
 console.log("env")
 sequelize.sync({force:false}).then(()=>{
     app.listen(config.port)
