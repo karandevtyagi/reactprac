@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
-// reactstrap components
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Button,
   Card,
@@ -17,12 +16,14 @@ import {
   Container,
   Col,
 } from 'reactstrap';
+import { login } from '../store/actions/auth';
+
+// reactstrap components
 
 import TransparentFooter from './Footers/TransparentFooter';
-import login from '../store/actions/index';
+
 // core components
-const Login = () => {
-  const dispatch = useDispatch();
+const Login = (props) => {
   const [values, setValues] = React.useState({
     email: '',
     password: '',
@@ -35,15 +36,11 @@ const Login = () => {
   // interact with backend to login user
   const handleSubmit = (event) => {
     event.preventDefault();
-    try {
-      const userdetail = {
-        email: values.email,
-        password: values.password,
-      };
-      dispatch(login(userdetail));
-    } catch (error) {
-      console.error(error);
-    }
+    const logindetails = {
+      email: values.email,
+      password: values.password,
+    };
+    props.login(logindetails);
   };
 
   // email field focus
@@ -62,6 +59,10 @@ const Login = () => {
       document.body.classList.remove('sidebar-collapse');
     };
   });
+  // Redirect if logged in
+  if (props.isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
         <>
         <div className="page-header clear-filter" filter-color="blue">
@@ -153,4 +154,11 @@ const Login = () => {
         </>
   );
 };
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+};
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { login })(Login);

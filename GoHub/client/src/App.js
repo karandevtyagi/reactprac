@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import Panel from './components/Panel';
+import Index from './components/Index';
 import Login from './components/Login';
 import Registration from './components/Registration';
+import DashBoard from './components/Dashboard/dashboard';
 import Alert from './components/Alert';
 import { loadUser } from './store/actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -19,12 +20,13 @@ function App() {
   });
   return (
    <>
-   {/* <Panel /> */}
+
    <Alert />
    <Switch>
-     <Route exact path="/" render={() => <Panel />} />
+     <Route exact path="/" render={() => <Index />} />
      <Route path="/login" render={() => <Login />} />
      <Route path="/register" render={() => <Registration />} />
+     <Route path="/dashboard" render={() => <DashBoard />} />
    </Switch>
    </>
   );
