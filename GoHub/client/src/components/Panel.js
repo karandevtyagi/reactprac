@@ -15,8 +15,30 @@ import {
   Container,
   UncontrolledTooltip,
 } from 'reactstrap';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../store/actions/auth';
 
-function Panel() {
+function Panel(props) {
+  const authLinks = (
+    <NavItem>
+    <NavLink
+      onClick={props.logout}
+    >
+      <p>logout</p>
+    </NavLink>
+    </NavItem>
+  );
+
+  const guestLinks = (
+      <NavItem>
+      <NavLink
+        href="/login"
+      >
+        <p>Login/Register</p>
+      </NavLink>
+      </NavItem>
+  );
   const [navbarColor, setNavbarColor] = React.useState('navbar-transparent');
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   React.useEffect(() => {
@@ -87,13 +109,8 @@ function Panel() {
             navbar
           >
             <Nav navbar>
-              <NavItem>
-                <NavLink
-                  href="/login"
-                >
-                  <p>Login/Register</p>
-                </NavLink>
-              </NavItem>
+            {!props.auth.loading
+                           && (<>{props.auth.isAuthenticated ? authLinks : guestLinks}</>)}
               <UncontrolledDropdown nav>
                 <DropdownToggle
                   caret
@@ -180,4 +197,11 @@ function Panel() {
     </>
   );
 }
-export default Panel;
+Panel.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps, { logout })(Panel);

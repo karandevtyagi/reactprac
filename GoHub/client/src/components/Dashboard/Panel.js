@@ -21,35 +21,34 @@ import { logout } from '../../store/actions/auth';
 // core components
 
 function Panel(props) {
-  const authLinks = (
-  <DropdownToggle
-    caret
-    color="default"
-    href="#pablo"
-    nav
-    onClick={(e) => e.preventDefault()}
-  >
-    <i
-      aria-hidden
-      className="now-ui-icons ui-1_settings-gear-63"
-    />
-  </DropdownToggle>
+  const guestLinks = (
+    <NavItem>
+    <NavLink
+      href="#pablo"
+      onClick={(e) => e.preventDefault()}
+    >
+      <i
+        aria-hidden
+        className="now-ui-icons users_single-02"
+      />
+    </NavLink>
+    </NavItem>
+
   );
 
-  const guestLinks = (
-    <DropdownToggle
-      caret
-      color="default"
-      href="#pablo"
-      nav
+  const authLinks = (
+    <NavItem>
+    <NavLink
+      href="/"
       onClick={props.logout}
     >
-    <i
-      aria-hidden
-      className="now-ui-icons ui-1_settings-gear-63"
-    />
-    <p>logout</p>
-    </DropdownToggle>
+      <i
+        aria-hidden
+        className="now-ui-icons users_single-02"
+      />
+      <p>Logout</p>
+    </NavLink>
+    </NavItem>
   );
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   return (
@@ -75,19 +74,21 @@ function Panel(props) {
                   </button>
                   <Collapse isOpen={collapseOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                      <NavItem>
-                        <NavLink
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <i
-                            aria-hidden
-                            className="now-ui-icons users_single-02"
-                          />
-                        </NavLink>
-                      </NavItem>
-                      {!props.auth.loading
-                           && (<>{props.auth.isAuthenticated ? guestLinks : authLinks}</>)}
+                    {!props.auth.loading
+                           && (<>{props.auth.isAuthenticated ? authLinks : guestLinks}</>)}
+                    <DropdownToggle
+                      caret
+                      color="default"
+                      href="#pablo"
+                      nav
+                      onClick={(e) => e.preventDefault()}
+                    >
+    <i
+      aria-hidden
+      className="now-ui-icons ui-1_settings-gear-63"
+    />
+                    </DropdownToggle>
+
                       <UncontrolledDropdown nav>
                         <DropdownMenu right>
                           <DropdownItem header tag="a">

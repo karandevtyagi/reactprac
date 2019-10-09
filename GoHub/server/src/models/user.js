@@ -28,8 +28,12 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING
     },licensenumber:{
       type:DataTypes.STRING
-    },password:DataTypes.STRING
-  }, {
+    },password:DataTypes.STRING,
+    phone:DataTypes.INTEGER,
+    website:DataTypes.STRING,
+    logo:DataTypes.BLOB
+  }, 
+  {
     hooks: {
       beforeCreate: hashPassword,
       beforeUpdate: hashPassword

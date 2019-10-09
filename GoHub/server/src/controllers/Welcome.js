@@ -2,6 +2,6 @@
 module.exports=
 {
    async message(req,res){
-     res.send({msg:"hello"})
+     res.send({msg:"WELCOME!!!!!!!!!!"})
     }
 }
