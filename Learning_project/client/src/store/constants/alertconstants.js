@@ -1,0 +1,13 @@
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAILURE = 'REGISTER_FAIL';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAIL';
+export const USER_LOADED = 'USER_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOGOUT = 'LOGOUT';
+export const GET_PROFILE = 'GET_PROFILE';
+export const ADDRESS_LOAD = 'ADDRESS_LOAD';
+export const SHOW_ADDRESS = 'SHOW_ADDRESS';
+export const LOAD_PRODUCT = 'LOAD_PRODUCT';
