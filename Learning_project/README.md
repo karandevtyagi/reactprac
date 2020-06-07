@@ -1,6 +1,3 @@
-# reactprac
-part 1-login logout registration auth
-part 2-profile/dashboard
-part 3-product buy search
-part 4- seller polishing
-part 5-improvements
+This is self learning project.
+This is a complete e-commerce website using react and node.
+
