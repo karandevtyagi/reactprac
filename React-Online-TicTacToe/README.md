@@ -1,4 +1,4 @@
-## [Demo Image Link](./public/demo.Png)
+## [Demo Image Link](https://github.com/karandevtyagi/reactprac/blob/master/React-Online-TicTacToe/public/demo.PNG)
 ---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
